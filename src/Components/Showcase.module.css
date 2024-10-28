@@ -1,0 +1,30 @@
+.showcase_wrapper{
+    background-color: purple;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.showcase {};
+
+.slide_show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    margin-bottom: 2rem;
+}
+
+.slide-item{
+    display: flex;
+    place-items: center;
+    position: relative;
+}
+
+.arrow-left, .arrow-right{
+    position: absolute;
+    z-index: 1000;
+}
+
+.arrow-left{
+    top: 1px;
+}
