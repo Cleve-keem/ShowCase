@@ -1,5 +1,7 @@
-import styles from "./Showcase.module.css"
+import styles from "./Showcase.module.css";
+
 function Showcase({ price, preview_image, shoe_image}) {
+
 
     return (
         <div className="container">
@@ -7,19 +9,19 @@ function Showcase({ price, preview_image, shoe_image}) {
                 <div className={styles.showcase}>
                     <div className={styles.slide_show}>
                         <div className={styles.slide_item}>
-                            <img src={shoe_image} alt="slide Image" />
-                            <div className="arrow-left"><i className="ri-left-fill">arrow left</i></div>
-                            <div className="arrow-right"><i className="ri-right-fill">arrow right</i></div>
+                            <img className={styles.slide_img} src="shoes/jordan_4_black_1.png" alt="slide Image" />
+                            <div className={styles.arrow_left}><i className="ri-arrow-left-s-line"></i></div>
+                            <div className={styles.arrow_right}><i className="ri-arrow-right-s-line"></i></div>
                         </div>
                     </div>
                     <div className="slide-themes">
-                        <span className="dark">1</span>
-                        <span className="light">2</span>
+                        <span className="dark">dark</span>
+                        <span className="light">light</span>
                     </div>
                     <div className="flex">
                         <div className="amount-btn">
                             <button className="add-btn">+</button>
-                            <div className="show-count"></div>
+                            <div className="show-count">0</div>
                             <button className="remove-btn">-</button>
                         </div>
                         <div className="chart-btn">
