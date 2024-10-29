@@ -1,6 +1,13 @@
 import styles from "./Showcase.module.css";
+// import image1 from ""
+// import { useState } from "react";
 
-function Showcase({ price, preview_image, shoe_image}) {
+function Showcase({ price, item_image, shoe_image}) {
+    // const [ currentIndex, setCurrentIndex ] = useState(0);
+
+    // const handleNextButton = () => {
+    //     setCurrentIndex((prevIndex) => prevIndex + 1);
+    // }
 
 
     return (
@@ -14,26 +21,30 @@ function Showcase({ price, preview_image, shoe_image}) {
                             <div className={styles.arrow_right}><i className="ri-arrow-right-s-line"></i></div>
                         </div>
                     </div>
-                    <div className="slide-themes">
-                        <span className="dark">dark</span>
-                        <span className="light">light</span>
+                    <div className={styles.slide_themes}>
+                        <span className={`${styles.dark_themes} active`}></span>
+                        <span className={styles.light_themes}></span>
                     </div>
-                    <div className="flex">
-                        <div className="amount-btn">
-                            <button className="add-btn">+</button>
-                            <div className="show-count">0</div>
-                            <button className="remove-btn">-</button>
+
+                    {/* Buttons and Price */}
+                    <div className={`${styles.buttons}`}>
+                        <div className={`${styles.amount_btn} flex`}>
+                            <button className={styles.add_btn}>+</button>
+                            <div className={`${styles.show_count} flex`}>0</div>
+                            <button className={styles.remove_btn}>-</button>
                         </div>
-                        <div className="chart-btn">
-                            <button className="add-to-chart">ADD TO CHART</button>
+                        <div className={`${styles.chart_btn} flex`}>
+                            <button className={styles.add_to_chart}>ADD TO CHART</button>
                         </div>
-                        <div className="show-price">{price}</div>
+                        <div className={`${styles.show_price} flex`}>$ 0</div>
                     </div>
                 </div>
-                <div className="preview-item">
-                    <div className="item">
-                        <img src={preview_image} alt="previewed image" />
-                    </div>
+                <div className={styles.preview}>
+                    <ul className={styles.items}>
+                        <li className={styles.preview_item}>
+                            <img src="shoes\white_jordan_3.png" alt="previewed image" />
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

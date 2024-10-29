@@ -1,18 +1,18 @@
 .showcase_wrapper{
+    color: #000;
+}
+
+.showcase {
     background-color: #fff;
     padding: 2rem;
     border-radius: 1rem;
-    color: #000;
-    /* position: relative; */
-}
-
-.showcase {};
+    margin-bottom: 2rem;
+};
 
 .slide_show{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: relative; */
     margin-bottom: 2rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .arrow_left, .arrow_right{
-    position: absolute; /* Position arrows absolutely within .showcase_wrapper */
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1000;
@@ -47,3 +47,61 @@
 .arrow_right{
     right: 0;
 }
+
+.slide_themes{
+    margin-bottom: 3rem;
+}
+
+.light_themes, .dark_themes{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #666;
+    border-radius: 50%;
+    margin: 0 3px;
+}
+
+.buttons {
+   display: flex;
+   justify-content: space-between;
+   align-items: center; 
+   gap: 3rem;
+   margin-bottom: 1rem;
+}
+
+.amount_btn {
+    flex: 1;
+}
+
+.show_count{
+    width: 70px;
+    height: 40px;
+}
+
+.chart_btn{
+    flex: 2;
+}
+
+.add_to_chart{
+    padding: 1rem;
+    width: 100%;
+}
+
+.show_price {
+    width: 100px;
+    height: 50px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+/* .preview_item{
+    width: 150px;
+    height: 150px;
+} */

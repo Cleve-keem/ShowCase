@@ -54,3 +54,20 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.active{
+  background-color: #222;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 100%;
+}
+
+ul{
+  list-style: none;
+}
