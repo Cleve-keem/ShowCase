@@ -1,29 +1,29 @@
 import styles from "./Showcase.module.css";
 import image1 from "../assets/shoes/white_jordan1.png";
 import image2 from "../assets/shoes/white_jordan2.png";
-import image3 from "../assets/shoes/white_jordan3.png";
 import image4 from "../assets/shoes/white_jordan4.png";
 import image5 from "../assets/shoes/black_jordan1.png";
 import image6 from "../assets/shoes/black_jordan2.png";
 import image7 from "../assets/shoes/black_jordan3.png";
+import image8 from "../assets/shoes/Green5.png";
+import image9 from "../assets/shoes/Green2.png";
+import image10 from "../assets/shoes/Green3.png";
+import image11 from "../assets/shoes/Green4.png";
+import image13 from "../assets/shoes/Green1.png";
+import image14 from "../assets/shoes/Sneaker4.png";
+import image15 from "../assets/shoes/Sneaker2.png";
+import image16 from "../assets/shoes/Sneaker3.png";
+import image17 from "../assets/shoes/Sneaker1.png";
+
 import { useReducer, useState } from "react";
 
 const images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7
+    { id: 1, src: [ image1, image2, image4 ], color: 'white' },
+    { id: 2, src: [ image5, image6, image7 ], color: 'black'},
+    { id: 3, src: [ image8, image9, image10 ], color: 'black'},
+    { id: 4, src: [ image14, image15, image16 ], color: 'black'},
 ]
 
-const item_images = [
-    image1,
-    image2,
-    image3,
-    image4
-]
 
 const themes = {
     purple: '#ba0ad1',
@@ -59,14 +59,16 @@ function Showcase() {
     const [ currentIndex, setCurrentIndex ] = useState(0);
     const [ bgColor, setBgColor ] = useState('#fff');
     const [ activeTheme, setActiveTheme ] = useState("light");
+    const [ id, setId ] = useState(0);
     const [ state, dispatch ] = useReducer(reducer, {count: 1, price: 100 } );
 
     const handleNextButton = () => {
-        setCurrentIndex((prevIndex) => prevIndex === images.length - 1 ? 0 :  prevIndex + 1);
+        console.log(currentIndex);
+        setCurrentIndex((prevIndex) => prevIndex === images[id].src.length - 1 ? 0 :  prevIndex + 1);
     }
 
     const handlePrevButton = () => {
-        setCurrentIndex((prevIndex) => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
+        setCurrentIndex((prevIndex) => prevIndex === 0 ? images[id].src.length - 1 : prevIndex - 1);
     }
 
     const changeTheme = (theme) => {
@@ -81,7 +83,7 @@ function Showcase() {
                     {/* slide image */}
                     <div className={styles.slide_show}>
                         <div className={styles.slide_item}>
-                            <img className={styles.slide_img} src={images[currentIndex]} alt="slide Image" />
+                            <img className={styles.slide_img} src={images[id].src[currentIndex]} alt="slide Image" />
                             <button 
                                 className={styles.arrow_left}
                                 onClick={handlePrevButton}><i className="ri-arrow-left-s-line"></i></button>
@@ -124,9 +126,13 @@ function Showcase() {
                 {/* Preview section  */}
                 <div className={styles.preview}>
                     <ul className={styles.items}>
-                        {item_images.map((item, index) => (
-                            <li key={index} className={`${styles.preview_item} flex`}>
-                                <img src={item} alt="previewed image" />
+                        {images.map((item, index) => (
+                            <li 
+                                key={index}
+                                className={`${styles.preview_item} flex`} 
+                                onClick={() => setId(item.id - 1)}
+                            >
+                                <img src={item.src[0]} alt="previewed image" />
                             </li>
                         ))}
                     </ul>
