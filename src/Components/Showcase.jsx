@@ -6,7 +6,7 @@ import image4 from "../assets/shoes/white_jordan4.png";
 import image5 from "../assets/shoes/black_jordan1.png";
 import image6 from "../assets/shoes/black_jordan2.png";
 import image7 from "../assets/shoes/black_jordan3.png";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 
 const images = [
     image1,
@@ -30,11 +30,36 @@ const themes = {
     light: '#eee'
 }
 
+const reducer = (state, action) =>{
+    switch(action.type){
+        case 'increment': {
+            const newCount = state.count + 1;
+            const newPrice = state.price + 100;
+
+            return{...state, count: newCount, price: newPrice}
+        }
+
+        case 'decrement': {
+            const newCount = state.count - 1;
+            const newPrice = state.price - 100;
+            const reachLimit = newCount < 1;
+
+            return{...state,
+                count: reachLimit? state.count : newCount,
+                price: reachLimit ? state.price : newPrice,
+            }
+        }
+        default:
+            return state;
+    }
+}
+
 function Showcase() {
 
     const [ currentIndex, setCurrentIndex ] = useState(0);
     const [ bgColor, setBgColor ] = useState('#fff');
-    const [activeTheme, setActiveTheme] = useState("light");
+    const [ activeTheme, setActiveTheme ] = useState("light");
+    const [ state, dispatch ] = useReducer(reducer, {count: 1, price: 100 } );
 
     const handleNextButton = () => {
         setCurrentIndex((prevIndex) => prevIndex === images.length - 1 ? 0 :  prevIndex + 1);
@@ -80,14 +105,20 @@ function Showcase() {
                     {/* Buttons and Price */}
                     <div className={`${styles.buttons}`}>
                         <div className={`${styles.amount_btn} flex`}>
-                            <button className={styles.add_btn}>+</button>
-                            <div className={`${styles.show_count} flex`}>0</div>
-                            <button className={styles.remove_btn}>-</button>
+                            <button
+                                className={styles.add_btn}
+                                onClick={() => dispatch({type: 'decrement'})}
+                            >-</button>
+                            <div className={`${styles.show_count} flex`}>{state.count}</div>
+                            <button 
+                                className={styles.remove_btn}
+                                onClick={() => dispatch({type: 'increment'})}
+                            >+</button>
                         </div>
                         <div className={`${styles.cart_btn} flex`}>
                             <button className={styles.add_to_cart}>ADD TO CART<i className={`${styles.cart_icon} ri-shopping-cart-2-line`}></i> </button>
                         </div>
-                        <div className={`${styles.show_price} flex`}>$ 0</div>
+                        <div className={`${styles.show_price} flex`}>$ {state.price}</div>
                     </div>
                 </div>
                 {/* Preview section  */}
